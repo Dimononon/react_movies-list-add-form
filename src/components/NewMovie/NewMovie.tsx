@@ -30,6 +30,11 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     event.preventDefault();
+
+    if (isFormInvalid) {
+      return;
+    }
+
     const newMovie: Movie = {
       title,
       description,
