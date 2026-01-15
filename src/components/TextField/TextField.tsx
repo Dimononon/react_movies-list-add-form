@@ -28,7 +28,7 @@ export const TextField: React.FC<Props> = ({
 
   const [touched, setTouched] = useState(false);
 
-  const showRequiredError = touched && required && !value;
+  const showRequiredError = touched && required && !value.trim();
   const showPatternError = touched && value && pattern && !pattern.test(value);
   const hasError = showRequiredError || showPatternError;
 
