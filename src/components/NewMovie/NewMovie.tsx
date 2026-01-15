@@ -26,9 +26,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
     !imdbUrl.trim() ||
     !URL_PATTERN.test(imdbUrl);
 
-  const handleAddButton = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
+  const handleSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (isFormInvalid) {
@@ -55,7 +53,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
   };
 
   return (
-    <form className="NewMovie" key={count}>
+    <form className="NewMovie" key={count} onSubmit={handleSubmitForm}>
       <h2 className="title">Add a movie</h2>
 
       <TextField
@@ -106,7 +104,6 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
             data-cy="submit-button"
             className="button is-link"
             disabled={isFormInvalid}
-            onClick={handleAddButton}
           >
             Add
           </button>
